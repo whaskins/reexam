@@ -1,0 +1,54 @@
+{% extends 'helper_app/index.html' %}
+
+{% block new %}
+<h2>Hello {{first_name}}!</h2>
+<label for="">Everyone's jobs:</label><br>
+<table class="table">
+    <tr>
+        <th>Job</th>
+        <th>Locations</th>
+        <th>Actions</th>
+    </tr>
+
+        {% for job in jobs %}
+    <tr>
+        <td>{{job.name}}</td>
+        <td>{{job.location}}</td>
+        <td>
+            <a href="/jobs/{{job.id}}">View</a> |
+            {% if job.created_by.id == request.session.uid %}
+            <a href="/jobs/{{job.id}}/delete">Remove</a> |
+            <a href="/jobs/{{job.id}}/edit">Edit</a> |
+            {% endif %}
+            <a href="/jobs/{{job.id}}/add">Add</a>
+        </td>
+    </tr>
+        {% endfor %}
+</table>
+
+{% if userJobs %}
+<label for="">{{first_name}}'s jobs:</label>
+<table class="table">
+        <tr>
+            <th>Job</th>
+            <th>Locations</th>
+            <th>Actions</th>
+        </tr>
+{% for job in userJobs %}
+    <tr>
+        <td>{{job.name}}</td>
+        <td>{{job.location}}</td>
+        <td>
+            <a href="/jobs/{{job.id}}">View</a> |
+            {% if job.created_by.id == request.session.uid %}
+            <a href="/jobs/{{job.id}}/delete">Done</a> |
+            <a href="/jobs/{{job.id}}/edit">Edit</a> |
+            {% endif %}
+            <a href="/jobs/{{job.id}}/give_up">Give up</a>
+        </td>
+    </tr>
+        {% endfor %}
+        </table>
+{% endif %}
+<a href="/jobs/new">Create a new job</a>
+{% endblock %}

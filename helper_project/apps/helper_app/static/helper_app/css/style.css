@@ -1,0 +1,20 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.logout{
+    text-align: right;
+
+}
+.info-box{
+    max-width: 500px;
+    border: 2px solid black;
+}
+
+.container{
+    margin: 35px;
+    padding: 35px;
+}
+.error{
+    color: red;
+}

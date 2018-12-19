@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Warren Haskins">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_app/css/style.css'%}">
+    <!-----change this--->
+</head>
+
+<body>
+    <div id="container">
+
+
+        <div class="login">
+            <h1>Register</h1>
+            <form action="/register" method="POST">
+                {% csrf_token %}
+                {% for key, value in request.session.reg_info.items %}
+                    <label for="">{{value}}</label>
+                    {% if messages %}
+                        
+                        {% for message in messages %}
+                        {% if key in message.tags and 'reg' in message.tags %}
+
+                        <p class="error">{{message}}</p>
+                        {% endif %}
+                        
+                        {% endfor %}
+
+                    {% endif %}
+                    <input type="{% if 'pass' in key or 'conf' in key %}password{% else %}text{% endif %}" name="{{key}}"><br>
+                {% endfor %}
+                <input type="submit" name="">
+            </form>
+        </div>
+        <div class="login">
+            <h1>Login</h1>
+            <form action="/login" method="POST">
+                {% csrf_token %}
+                {% for key, value in request.session.login_info.items %}
+                <label for="">{{value}}</label>
+                {% if messages %}
+                        
+                        {% for message in messages %}
+                        {% if key in message.tags and 'login' in message.tags %}
+
+                        <p class="error">{{message}}</p>
+                        {% endif %}
+                        
+                        {% endfor %}
+
+                    {% endif %}
+                <input type="{% if 'pass' in key %}password{% else %}text{% endif %}" name="{{key}}"><br>
+                {% endfor %}
+                <input type="submit" name="">
+            </form>
+        </div>
+    </div>
+    <a href="/logout">logout</a>
+
+</body>
+
+</html>

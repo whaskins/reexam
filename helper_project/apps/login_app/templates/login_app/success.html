@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Warren Haskins">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_app/css/style.css'%}">
+    <!-----change this--->
+</head>
+
+<body>
+    <div id="container">
+
+
+        <div class="login">
+            <h1>Welcome {{name}}</h1>
+        </div>
+    </div>
+    <a href="/logout">logout</a>
+</body>
+
+</html>

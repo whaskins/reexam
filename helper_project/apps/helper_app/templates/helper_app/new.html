@@ -1,0 +1,41 @@
+{% extends 'helper_app/index.html' %}
+
+{% block new %}
+<h2>Create a new job</h2>
+{% if messages %}
+
+{% for message in messages %}
+
+
+<p class="error">{{message}}</p>
+
+
+{% endfor %}
+
+{% endif %}
+<form action="/jobs/create" method="POST">
+    {% csrf_token %}
+    <label for="">Job Name:</label>
+    <input type="text" name="name" id=""><br>
+    <label for="">Job Location:</label>
+    <input type="text" name="location" id=""><br>
+    <label for="">Job Description:</label>
+    <input type="text" name="desc" id=""><br>
+    <label for="">Categories</label>
+    <label for="">Cleaning</label>
+    <input type="checkbox" name="Cleaning" value="Cleaning"><br>
+    <label for="">Cooking</label>
+    <input type="checkbox" name="Cooking" value="Cooking"><br>
+    <label for="">Decorating</label>
+    <input type="checkbox" name="Decorating" value="Decorating"><br>
+    <label for="">Other</label>
+    <input type="checkbox" name="Other" for="other">
+    <input type="text" name="Other" id="other"><br>
+    <input type="submit">
+
+    </select>
+</form>
+
+
+
+{% endblock %}

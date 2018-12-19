@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Warren Haskins">
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'helper_app/css/style.css'%}">
+    <!-----change this--->
+</head>
+
+<body>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/logout" class="logout">Logout</a>
+    <div class="container">
+    {% block new %}
+    {% endblock %}
+</div>
+</body>
+
+</html>
